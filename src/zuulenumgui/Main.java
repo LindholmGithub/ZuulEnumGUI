@@ -8,6 +8,7 @@ package zuulenumgui;
 import zuulenumgui.bll.CommandWord;
 import zuulenumgui.bll.Game;
 import zuulenumgui.gui.console.ZuulConsole;
+import zuulenumgui.gui.javafx.App;
 import zuulenumgui.gui.swing.ZuulGUI;
 
 /**
@@ -26,7 +27,8 @@ public class Main
         
         
 //        Main.console();
-        Main.graphical();
+//        Main.graphical();
+        Main.graphicalFX(args);
     }
 
     private static void console()
@@ -65,6 +67,12 @@ public class Main
                 new ZuulGUI().setVisible(true);
             }
         });
+    }
+
+    private static void graphicalFX(String[] args)
+    {
+        App app = new App();
+        app.go(args);
     }
 
 }
