@@ -5,8 +5,6 @@
  */
 package zuulenumgui;
 
-import zuulenumgui.bll.CommandWord;
-import zuulenumgui.bll.Game;
 import zuulenumgui.gui.console.ZuulConsole;
 import zuulenumgui.gui.javafx.App;
 import zuulenumgui.gui.swing.ZuulGUI;
@@ -31,12 +29,18 @@ public class Main
         Main.graphicalFX(args);
     }
 
+    /**
+     * Runs Zuul as a console application.
+     */
     private static void console()
     {
         ZuulConsole zuulConsole = new ZuulConsole();
         zuulConsole.playNewGame();
     }
 
+    /**
+     * Runs Zuul as a Swing application.
+     */
     private static void graphical()
     {
         /* Set the Nimbus look and feel */
@@ -69,6 +73,10 @@ public class Main
         });
     }
 
+    /**
+     * Runs Zuul as a JavaFX application.
+     * @param args 
+     */
     private static void graphicalFX(String[] args)
     {
         App app = new App();

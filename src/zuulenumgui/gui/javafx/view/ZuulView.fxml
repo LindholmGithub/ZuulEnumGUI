@@ -10,13 +10,12 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
 <BorderPane xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="zuulenumgui.gui.javafx.controller.ZuulController">
    <center>
       <VBox maxHeight="1.7976931348623157E308" BorderPane.alignment="CENTER">
          <children>
             <Label fx:id="lblRoomHeader" text="Label" />
-            <TextArea fx:id="txtAreaOutput" maxHeight="1.7976931348623157E308" />
+            <TextArea fx:id="txtAreaOutput" maxHeight="1.7976931348623157E308" VBox.vgrow="ALWAYS" />
          </children>
       </VBox>
    </center>
@@ -31,7 +30,7 @@
       <VBox maxHeight="1.7976931348623157E308" BorderPane.alignment="CENTER">
          <children>
             <Label text="Options" />
-            <ListView fx:id="lstCommands" prefHeight="200.0" prefWidth="200.0" />
+            <ListView fx:id="lstCommands" VBox.vgrow="ALWAYS" />
             <HBox VBox.vgrow="NEVER">
                <children>
                   <TextField fx:id="txtSecondCommand" />
