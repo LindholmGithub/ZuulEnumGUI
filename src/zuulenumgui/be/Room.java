@@ -93,4 +93,10 @@ public class Room
     {
         return exits.get(direction);
     }
+
+    public String[] getExits()
+    {
+        String[] exitsAsArr = (String[]) exits.keySet().toArray();
+        return exitsAsArr;
+    }
 }

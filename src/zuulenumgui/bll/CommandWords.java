@@ -22,7 +22,7 @@ public class CommandWords
     private HashMap<String, CommandWord> validCommands;
 
     /**
-     * Constructor - initialise the command words.
+     * Constructor - initialize the command words.
      */
     public CommandWords()
     {

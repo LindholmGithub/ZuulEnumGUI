@@ -22,6 +22,7 @@ public class Game
 {
 
     private Room currentRoom;
+    private String longDescription;
 
     /**
      * Create the game and initialise its internal map.
@@ -36,7 +37,7 @@ public class Game
      */
     private void createRooms()
     {
-        Room outside, theater, pub, lab, office;
+        Room outside, theater, pub, lab, office, dungeon;
 
         // create the rooms
         outside = new Room("outside the main entrance of the university");
@@ -44,22 +45,26 @@ public class Game
         pub = new Room("in the campus pub");
         lab = new Room("in a computing lab");
         office = new Room("in the computing admin office");
+        dungeon = new Room("in Jeppe's dungeon");
 
-        // initialise room exits
+        // initialise room exits in pairs:
         outside.setExit("east", theater);
-        outside.setExit("south", lab);
-        outside.setExit("west", pub);
-
         theater.setExit("west", outside);
 
+        outside.setExit("south", lab);
+        lab.setExit("north", outside);
+
+        outside.setExit("west", pub);
         pub.setExit("east", outside);
 
-        lab.setExit("north", outside);
         lab.setExit("east", office);
-
         office.setExit("west", lab);
 
+        pub.setExit("down", dungeon);
+        dungeon.setExit("up", pub);
+
         currentRoom = outside;  // start game outside
+        longDescription = currentRoom.getLongDescription();
     }
 
     /**
@@ -80,7 +85,7 @@ public class Game
                 throw new IllegalArgumentException("Unknown command.");
 
             case HELP:
-                //printHelp();
+                //Do nothing
                 break;
 
             case GO:
@@ -113,10 +118,10 @@ public class Game
         if (nextRoom == null)
         {
             throw new IllegalArgumentException(direction + " is not a valid exit.");
-        }
-        else
+        } else
         {
             currentRoom = nextRoom;
+            longDescription = currentRoom.getLongDescription();
         }
     }
 
@@ -131,8 +136,7 @@ public class Game
         if (command.hasSecondWord())
         {
             throw new IllegalArgumentException("Quit what?");
-        }
-        else
+        } else
         {
             return true;  // signal that we want to quit
         }
@@ -140,6 +144,11 @@ public class Game
 
     public String getLongDescription()
     {
-        return currentRoom.getLongDescription();
+        return longDescription;
+    }
+
+    public Room getCurrentRoom()
+    {
+        return currentRoom;
     }
 }

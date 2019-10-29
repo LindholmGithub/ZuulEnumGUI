@@ -29,12 +29,12 @@
    <left>
       <VBox maxHeight="1.7976931348623157E308" BorderPane.alignment="CENTER">
          <children>
-            <Label text="Options" />
+            <Label text="Commands" />
             <ListView fx:id="lstCommands" VBox.vgrow="ALWAYS" />
             <HBox VBox.vgrow="NEVER">
                <children>
-                  <TextField fx:id="txtSecondCommand" />
-                  <Button mnemonicParsing="false" onAction="#handleExecuteCommand" text="Button" />
+                  <TextField fx:id="txtSecondCommand" maxWidth="1.7976931348623157E308" promptText="... enter second command word" HBox.hgrow="ALWAYS" />
+                  <Button mnemonicParsing="false" onAction="#handleExecuteCommand" text="Execute command" />
                </children>
             </HBox>
          </children>

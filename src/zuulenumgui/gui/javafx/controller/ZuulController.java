@@ -27,7 +27,7 @@ import zuulenumgui.bll.Game;
  */
 public class ZuulController implements Initializable
 {
-    
+
     @FXML
     private ListView<CommandWord> lstCommands;
     @FXML
@@ -36,9 +36,9 @@ public class ZuulController implements Initializable
     private Label lblRoomHeader;
     @FXML
     private TextArea txtAreaOutput;
-    
+
     private Game game;
-    
+
     public ZuulController()
     {
         game = new Game();
@@ -53,23 +53,31 @@ public class ZuulController implements Initializable
         txtAreaOutput.setText(game.getLongDescription());
         ObservableList<CommandWord> cmdWords = FXCollections.observableArrayList(CommandWord.values());
         lstCommands.setItems(cmdWords);
+        lblRoomHeader.setText(game.getCurrentRoom().getShortDescription());
     }
-    
+
     @FXML
     private void handleExecuteCommand(ActionEvent event)
     {
         CommandWord cmdWord = lstCommands.getSelectionModel().getSelectedItem();
         String secondWord = txtSecondCommand.getText().trim().toLowerCase();
-        Command cmd = new Command(cmdWord, secondWord);
         
+        Command cmd = new Command(cmdWord, secondWord);
+
         try
         {
-            if (game.processCommand(cmd))
+            if (cmdWord == CommandWord.HELP)
+            {
+                txtAreaOutput.setText("Choose a valid command from the list to the left.\n"
+                        + "If you need to input a direction type it into the textfield below to the left."  
+                        + game.getCurrentRoom().getExits());
+            } else if (game.processCommand(cmd))
             {
                 txtAreaOutput.setText("Press the red cross in the upper right corner to quit...");
             } else
             {
                 txtAreaOutput.setText(game.getLongDescription());
+                lblRoomHeader.setText(game.getCurrentRoom().getShortDescription());
             }
         } catch (Exception e)
         {
@@ -77,5 +85,5 @@ public class ZuulController implements Initializable
             e.printStackTrace();
         }
     }
-    
+
 }
