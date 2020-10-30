@@ -7,7 +7,8 @@ package zuulenumgui.bll;
  * @author Michael Kölling and David J. Barnes
  * @version 2011.08.10
  */
-public enum CommandWord
+public enum
+CommandWord
 {
     // A value for each command word along with its
     // corresponding user interface string!

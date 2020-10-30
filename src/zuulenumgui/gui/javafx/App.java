@@ -39,9 +39,17 @@ public class App extends Application
      * Initializes the Zuul game with a JavaFX interface.
      * @param args 
      */
-    public void go(String[] args)
+    public static void main(String[] args)
     {
+
+
+
+
         launch(args);
+
+
+
+
     }
            
 }

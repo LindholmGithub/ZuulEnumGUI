@@ -80,7 +80,7 @@ public class Main
     private static void graphicalFX(String[] args)
     {
         App app = new App();
-        app.go(args);
+        app.main(args);
     }
 
 }
